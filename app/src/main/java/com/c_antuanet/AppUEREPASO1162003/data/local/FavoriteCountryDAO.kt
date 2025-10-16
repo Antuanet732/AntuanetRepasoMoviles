@@ -1,0 +1,21 @@
+package com.c_antuanet.AppUEREPASO1162003.data.local
+
+
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+
+@Dao
+interface FavoriteCountryDao {
+    //Insert FavoriteCountryEntity
+    @Insert
+    suspend fun insertFavoriteCountry(favoriteCountry: FavoriteCountryEntity)
+    //Delete FavoriteCountryEntity
+    @Delete
+    suspend fun deleteFavoriteCountry(favoriteCountry: FavoriteCountryEntity)
+    //Get All FavoriteCountryEntity
+    @Query("SELECT * FROM favorite_countries")
+    fun getAll(): Flow<List<FavoriteCountryEntity>>
+}
